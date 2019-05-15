@@ -11,7 +11,6 @@ class Env
     public static function overloadEnv($path)
     {
         if (is_file($path)) {
-        	var_dump($path);
             $env = parse_ini_file($path, true);            
             foreach ($env as $key => $val) {
                 $name = self::ENV_PREFIX . strtoupper($key);
@@ -27,6 +26,7 @@ class Env
             }
         } else {
             echo ".env文件不存在" . PHP_EOL;
+            exit;
         }
     }
     public static function get($name)

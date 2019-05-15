@@ -65,12 +65,12 @@ class JueJin
         if (!$pages) {
             return false;
         }
-        foreach ($pages as &$page) {
+        foreach ($pages as $sort => &$page) {
             $r = $this->getPage($page['sectionId']);
             if (!$r) {
                 $page['log'] .= "请求成功" . PHP_EOL;
             }
-            $re = $this->saveToPath($path, $r['d']);
+            $re = $this->saveToPath($path, $r['d'], $sort);
             if ($re) {
                 $page['log'] .= "保存成功" . PHP_EOL;
             }
@@ -88,8 +88,10 @@ class JueJin
         }
         return $res;
     }
-    public function saveToPath(string $path, $page)
+    public function saveToPath(string $path, array $page, int $sort)
     {
+        // 因为$sort是从零开始的
+        $sort += 1;
         $pathMarkdown = $path . DIRECTORY_SEPARATOR . "markdown" . DIRECTORY_SEPARATOR;
         $pathHtml     = $path . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR;
         if (!is_dir($pathMarkdown)) {
@@ -99,9 +101,9 @@ class JueJin
             mkdir($pathHtml, 0755, true);
         }
 
-        $filename = $pathMarkdown . $page['title'] . "-" . $page['sectionId'] . ".md";
+        $filename = $pathMarkdown . $sort .$page['title'] . "-" . ".md";
         $this->saveAsMarkdown($filename, $page['content']);
-        $filename = $pathHtml . $page['title'] . "-" . $page['sectionId'] . ".html";
+        $filename = $pathHtml . $sort . $page['title'] . ".html";
         $this->saveAsHtml($filename, $page['html']);
     }
     public function saveAsMarkdown(string $filename, string $markdownContent)
