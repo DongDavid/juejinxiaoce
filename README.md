@@ -31,7 +31,8 @@ git reset HEAD ^
 git rm --cache .env
 # 提交一下
 git commit -am 'v.12'
-
+# 强行覆盖掉仓库吧
+git push -u origin master -f
 ```
 
 
