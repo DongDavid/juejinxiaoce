@@ -8,19 +8,27 @@
 
 $loader = require_once "vendor/autoload.php";
 
+// 加载.env文件
+\dongdavid\reptile\tools\Env::overloadEnv(__DIR__ . '/.env');
 
 $juejin = new \dongdavid\reptile\juejin\JueJin();
 
 // 这些要先登录，从浏览器里面自己找
 $config = [
-    'token'=>"==",
-    'client_id'=>"",
-    'uid'=>"",
+    'token'     => \dongdavid\reptile\tools\Env::get('TOKEN'),
+    'client_id' => \dongdavid\reptile\tools\Env::get('CLIENT_ID'),
+    'uid'       => \dongdavid\reptile\tools\Env::get('UID'),
 ];
 // 小册子的id
-$id = "";
+$id = \dongdavid\reptile\tools\Env::get('XIAOCE_ID');
 // 开启调试
+
 // \dongdavid\reptile\tools\HttpClient::$debug = true;
 $juejin->setConfig($config);
 $r = $juejin->start($id);
-var_dump($r);
+
+if ($r) {
+    var_dump($r);
+} else {
+    echo "下载失败了,自己把debug打开看看原因吧";
+}

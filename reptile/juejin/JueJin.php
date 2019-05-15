@@ -73,7 +73,6 @@ class JueJin
             $re = $this->saveToPath($path, $r['d']);
             if ($re) {
                 $page['log'] .= "保存成功" . PHP_EOL;
-                return false;
             }
         }
         return $pages;
