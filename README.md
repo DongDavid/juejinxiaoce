@@ -16,6 +16,9 @@
 2. 修改配置信息，填写登录后获取到的`client_id,token,uid`字段,并填入要下载的小册子ID。  
 3. 然后执行`php index.php`即可
 
+> 小册ID就是 `https://juejin.im/book/这里是小册ID/`中book后的一串,  
+而`client_id,token,uid`可以打开F12 并且随便点进一个章节去network里面找一下。
+
 目录读写权限自己注意，下载的文件会保存在与`index.php`文件同级的`output`目录下
 
 默认同时生成html格式和markdown格式

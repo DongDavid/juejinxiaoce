@@ -23,12 +23,12 @@ $config = [
 $id = \dongdavid\reptile\tools\Env::get('XIAOCE_ID');
 // 开启调试
 
-// \dongdavid\reptile\tools\HttpClient::$debug = true;
+\dongdavid\reptile\tools\HttpClient::$debug = false;
 $juejin->setConfig($config);
 $r = $juejin->start($id);
 
 if ($r) {
     var_dump($r);
 } else {
-    echo "下载失败了,自己把debug打开看看原因吧";
+    echo "下载失败了,自己把index.php里面的第26行的debug打开看看原因吧";
 }
