@@ -100,10 +100,11 @@ class JueJin
         if (!is_dir($pathHtml)) {
             mkdir($pathHtml, 0755, true);
         }
+        $page['title'] = str_replace('/', "-bs-", $page['title']);
 
-        $filename = $pathMarkdown . $sort .$page['title'] . "-" . ".md";
+        $filename = $pathMarkdown . $sort.'. ' .$page['title'] . "-" . ".md";
         $this->saveAsMarkdown($filename, $page['content']);
-        $filename = $pathHtml . $sort . $page['title'] . ".html";
+        $filename = $pathHtml . $sort .'. '. $page['title'] . ".html";
         $this->saveAsHtml($filename, $page['html']);
     }
     public function saveAsMarkdown(string $filename, string $markdownContent)
