@@ -18,7 +18,7 @@ class JueJin
 
     public $saveConfig = [
         'path'     => './output',
-        'fileType' => ['markdown', 'html'],
+        'fileType' => ['markdown', 'html','pdf'],
     ];
 
     private $config = [
@@ -94,12 +94,17 @@ class JueJin
         $sort += 1;
         $pathMarkdown = $path . DIRECTORY_SEPARATOR . "markdown" . DIRECTORY_SEPARATOR;
         $pathHtml     = $path . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR;
+        $pathPdf      = $path . DIRECTORY_SEPARATOR . "pdf"  . DIRECTORY_SEPARATOR;
         if (!is_dir($pathMarkdown)) {
             $r = mkdir($pathMarkdown, 0755, true);
         }
         if (!is_dir($pathHtml)) {
             mkdir($pathHtml, 0755, true);
         }
+        if (!is_dir($pathPdf)) {
+            mkdir($pathPdf, 0755, true);
+        }
+
         $page['title'] = str_replace('/', "-bs-", $page['title']);
 
         $filename = $pathMarkdown . $sort.'. ' .$page['title'] . "-" . ".md";
@@ -116,7 +121,10 @@ class JueJin
     {
         file_put_contents($fielname, $htmlContent);
     }
-
+    public function convert2Pdf(string $inputHtml,string $outputPdf=null)
+    {
+              
+    }
     public function downImages(string $content, string $savePath)
     {
 

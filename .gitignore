@@ -2,3 +2,4 @@
 /output
 .env
 .DS_Store
+.idea/
