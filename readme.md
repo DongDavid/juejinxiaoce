@@ -7,7 +7,7 @@
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --kiosk-printing --user-data-dir="/Users/daviddong/Downloads/package/seleium-kios"
 ```
 然后再打开的浏览器中登录你的掘金账号
-然后运行脚本开始爬去小册内容
+然后运行脚本开始爬取所有已购买小册内容
 ```shell
 python main.py
 ```
