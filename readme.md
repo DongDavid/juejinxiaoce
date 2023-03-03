@@ -1,4 +1,6 @@
-# 掘金小册抓去到本地
+# 掘金小册下载到本地
+
+从之前的php版本改成了python版本,使用`selenium`来爬取数据,不需要去考虑到底哪些请求参数,cookie是有用的,直接在登录后抓取完整的cookie附到请求中就好了,随便掘金怎么改版都不影响.
 
 ## 使用方法
 
@@ -6,12 +8,15 @@
 ```shell
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --kiosk-printing --user-data-dir="/Users/daviddong/Downloads/package/seleium-kios"
 ```
-然后再打开的浏览器中登录你的掘金账号
+然后再打开的浏览器中登录你的掘金账号  
 然后运行脚本开始爬取所有已购买小册内容
 ```shell
 python main.py
 ```
 
+## todo  
+
+找一个效果比较好的html转pdf工具生成pdf，这样可以在无网络的情况下也能正常阅读小册
 
 ## 安装Selenium  
 
@@ -19,9 +24,9 @@ python main.py
 pip install selenium
 ```
 安装浏览器driver
-到(驱动网站)[http://chromedriver.storage.googleapis.com/index.html]上下载对应驱动，前三位版本号要一致,最好是前四位都一致
+到[驱动网站](http://chromedriver.storage.googleapis.com/index.html)上下载对应驱动，前三位版本号要一致,最好是前四位都一致
 我用的是Mac Intel芯片,当前浏览器版本 版本 107.0.5304.110（正式版本） (x86_64)
-所以下载(这个链接)[http://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_mac64.zip]
+所以下载[这个链接](http://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_mac64.zip)
 解压后得到`chromedriver`文件
 执行命令
 ```shell
